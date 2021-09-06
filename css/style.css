@@ -1,0 +1,106 @@
+body {
+  font-family: "Pavanam", sans-serif;
+}
+
+.phonetic {
+  display: flex;
+  align-items: center;
+}
+
+img {
+  width: 1rem;
+  padding: 0.2rem;
+  margin-left: 1rem;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+img:hover {
+  transform: scale(1.1);
+  border: 2px solid blue;
+}
+.result {
+  border-radius: 1rem;
+  background-color: rgba(39, 110, 87, 0.151);
+  padding: 2em;
+  word-wrap: break-word;
+  width: 70vw;
+  margin: 1rem auto;
+  box-shadow: inset 0px 0px 10px grey;
+  border-top: 5px solid transparent;
+  /* word-break: break-all; */
+}
+
+.result div {
+  padding: 0.2em;
+}
+
+.word {
+  font-size: 2em;
+  color: rgb(29, 29, 156);
+  font-weight: 800;
+  margin-top: 1rem;
+}
+
+.origin::before {
+  content: "Origin";
+  color: green;
+}
+
+.partofspeech {
+  color: rgb(49, 26, 26);
+  font-weight: 600;
+  margin-top: 1.5rem;
+}
+
+.definition {
+  margin-top: 1rem;
+  color: rgb(83, 43, 226);
+}
+
+.example::before {
+  content: "Example : ";
+  color: grey;
+}
+
+.opposite::before {
+  content: "Opposite : ";
+  color: crimson;
+}
+
+.similar::before {
+  content: "Similar : ";
+  color: green;
+}
+
+#search-input {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid black;
+  text-align: center;
+}
+
+#search {
+  border: 1px solid black;
+  background-color: rgb(231, 230, 230);
+  margin: 0 1rem;
+  padding: 0.2rem 1rem;
+  border-radius: 3rem;
+}
+
+#search:hover {
+  border-color: blue;
+  color: blue;
+  background-color: transparent;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.header,
+.footer {
+  margin: 1rem auto;
+  text-align: center;
+}
