@@ -6,24 +6,31 @@ class Dictionary {
   async search(word) {
     if (typeof word !== "string" || !word || word === ".")
       throw new Error("Invalid input is passed");
-    const res = await fetch(this.baseURL + word);
-    this.clearResult();
-    const data = await res.json();
-    if (res.status === 200) {
-      data.forEach((startele, wid) => {
-        this.createResult("Word", startele.word);
-        this.createResult("Origin", startele.origin || "No origin");
-        this.createPhonetics(startele.phonetics, wid);
-        this.createMeaning(startele.meanings);
-        document.querySelector(".result").style = "border-color:green";
-      });
-    } else if (res.status === 404) {
-      this.createResult("Error - ", data.title);
+    try {
+      this.clearResult();
+      const res = await fetch(this.baseURL + word);
+      const data = await res.json();
+      if (res.status === 200) {
+        data.forEach((startele, wid) => {
+          this.createResult("Word", startele.word);
+          this.createResult("Origin", startele.origin || "No origin");
+          this.createPhonetics(startele.phonetics, wid);
+          this.createMeaning(startele.meanings);
+          document.querySelector(".result").style = "border-color:green";
+        });
+      } else if (res.status === 404) {
+        this.createResult("Error - ", data.title);
+        document.querySelector(".result").style = "border-color:red";
+      }
+    } catch (err) {
+      this.createResult("Error - ", err);
       document.querySelector(".result").style = "border-color:red";
+      console.log(err);
     }
   }
 
   clearResult() {
+    document.querySelector(".result").classList.remove("inactive");
     document.querySelector(".result").innerHTML = "";
   }
   createResult(title, data) {
